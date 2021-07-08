@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 
 export default function App() {
   const handlePress = () => (console.log('clicked'))
@@ -8,11 +8,13 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Text onPress={handlePress}>Hello Welcome to React Native</Text>
+      <TouchableOpacity onPress={handlePress}>
       <Image source={{
         uri: "https://picsum.photos/200/300",
         width: 200,
         height:300
       }} />
+      </TouchableOpacity>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
