@@ -3,15 +3,21 @@ import colors from '../../config/colors'
 
 
 const styles = StyleSheet.create({
-button: {
-backgroundColor: colors.primary,
-borderRadius: 5,
-width : "100%",
-height: 50,
-color: 'red',
-flex: 1
-
-}
+  button:{
+    backgroundColor: colors.primary,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
+    width: '100%',
+    marginVertical: 6
+  },
+  text: {
+    color: 'white',
+    fontSize: 18,
+    textTransform: 'uppercase',
+    fontWeight: 'bold'
+  }
 })
 
 export default styles

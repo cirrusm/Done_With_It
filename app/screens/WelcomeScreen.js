@@ -6,6 +6,7 @@ import colors from '../config/colors';
 const WelcomeScreen = () => {
   return ( 
     <ImageBackground
+    blurRadius={6}
     style={styles.background}
     source={require('../assets/background.jpg')}
     
@@ -13,12 +14,13 @@ const WelcomeScreen = () => {
       <View style={styles.logoContainer}>
       
       <Image style = {styles.logo} source= {require('../assets/logo-red.png')}/>
-      <Text> Sell What You Don't Need</Text>
+      <Text style={styles.tagline}> Sell What You Don't Need</Text>
       </View>
-      <AppButton style={styles.button}>
-      
-      </AppButton>
-      <View style={styles.registerButton}></View>
+      <View style={styles.buttonsContainer}>
+        <AppButton title="log in" onPress={() => console.log('button pressed')}>      
+        </AppButton>
+        <AppButton title="sign up" onPress={()=>console.log('sign up')} color="secondary"></AppButton>
+      </View>
     </ImageBackground>
   );
 }
@@ -29,22 +31,6 @@ background:{
   justifyContent: "flex-end",
   alignItems: 'center'
 },
-button:{
-  borderRadius: 5,
-  color: 'red',
-  width: '100%',
-  height: 70
-},
-loginButton:{
-width: "100%",
-height: 70,
-backgroundColor:"#fc5c65",
-},
-registerButton:{
-  height: 70,
-  width: '100%',
-  backgroundColor: "#4ecdc4"
-},
 logo: {
 width: 100,
 height: 100,
@@ -52,6 +38,16 @@ height: 100,
 logoContainer:{position: 'absolute',
 top: 70,
 alignItems: 'center'
+},
+buttonsContainer: {
+  padding:20,
+  width: '100%',
+},
+tagline: {
+  fontSize: 25,
+  fontWeight: '600',
+  paddingVertical: 20,
+
 }
 
 })
