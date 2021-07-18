@@ -21,7 +21,7 @@ card: {
   backgroundColor: 'white',
   borderRadius: 15,
   marginBottom:20,
-  width: '90%'
+  width: '100%'
 },
 image: {
   width: '100%',
