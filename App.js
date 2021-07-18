@@ -13,6 +13,7 @@ import Screen from './app/components/Screen';
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
 import LoginScreen from './app/screens/LoginScreen';
+import RegisterScreen from './app/screens/RegisterScreen';
 
 const categories = [
   {label: 'Furniture', value: 1},
@@ -24,7 +25,7 @@ export default function App() {
   const [category, setCategory] = useState()
   const [firstName, setFirstName] = useState('')
   return (
-    <LoginScreen />   
+    <RegisterScreen />   
     // <Screen>
     //   <AppPicker 
     //   placeholder = "Category"

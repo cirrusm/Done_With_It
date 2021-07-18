@@ -1,24 +1,31 @@
-import React, {useState} from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import {AppForm, AppFormField, SubmitButton} from '../components/Forms'
 import Screen from '../components/Screen'
 import * as Yup from 'yup'
-import {AppForm, AppFormField, SubmitButton} from '../components/Forms'
-
+import React, {useState} from 'react'
+import { StyleSheet, Text, View, Image } from 'react-native'
 
 const validationSchema = Yup.object().shape({
+  name: Yup.string().required().label("Name"),
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label('Password')
 })
 
-export default function LoginScreen() {
+export default function RegisterScreen() {
   return (
     <Screen style={{ padding: 10}}>
-      <Image style={styles.logo} source = {require('../assets/logo-red.png')} />
+      
 
       <AppForm
       initialValues={{email: '', password: ''}}
       onSubmit={values => console.log(values)}
       validationSchema={validationSchema}>
+        <AppFormField
+              placeholder="Name" 
+              icon="account"
+              name="user" 
+              autoCapitalize="none" 
+              autoCorrect={false} 
+              />
           <AppFormField
               placeholder="Email" 
               icon="email"
@@ -36,7 +43,7 @@ export default function LoginScreen() {
               textContentType="password"
               secureTextEntry
             />
-          <SubmitButton  title="Submit"/>
+          <SubmitButton  title="Register"/>
       </AppForm>
     </Screen>
   )
