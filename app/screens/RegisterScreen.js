@@ -16,13 +16,13 @@ export default function RegisterScreen() {
       
 
       <AppForm
-      initialValues={{email: '', password: ''}}
+      initialValues={{email: '', password: '', name: ''}}
       onSubmit={values => console.log(values)}
       validationSchema={validationSchema}>
         <AppFormField
               placeholder="Name" 
               icon="account"
-              name="user" 
+              name="name" 
               autoCapitalize="none" 
               autoCorrect={false} 
               />
