@@ -8,12 +8,12 @@ import Screen from './Screen'
 import PickerItem from './PickerItem'
 
 
-export default function AppPicker({icon, onSelectItem, selectedItem, placeholder, items}) {
+export default function AppPicker({icon, onSelectItem, selectedItem, PickerItemComponent= PickerItem, placeholder, items, width}) {
   const [modalVisible, setModalVisible] = useState(false)
   return (
     <React.Fragment>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-      <View style={styles.container}>
+      <View style={[styles.container, {width}]}>
         { icon && <MaterialCommunityIcons name={icon} style= {styles.icon} size={20} color= {colors.medium}/>}
         {selectedItem ? (
           <AppText style={styles.text}> {selectedItem.label}</AppText>) :( <AppText style={styles.placeholder}>{placeholder}</AppText>
@@ -29,7 +29,7 @@ export default function AppPicker({icon, onSelectItem, selectedItem, placeholder
         data={items}
         keyExtractor={(item)=> item.value.toString()}
         renderItem={({item}) =>
-          <PickerItem
+          <PickerItemComponent
             label={item.label}
           onPress={()=>{
             setModalVisible(false)
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: '100%',
     padding: 15,
     marginVertical: 10,
     alignItems: 'center'
