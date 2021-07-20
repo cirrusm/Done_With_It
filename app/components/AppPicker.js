@@ -8,7 +8,7 @@ import Screen from './Screen'
 import PickerItem from './PickerItem'
 
 
-export default function AppPicker({icon, onSelectItem, selectedItem, PickerItemComponent= PickerItem, placeholder, items, width}) {
+export default function AppPicker({icon, numberOfColumns=1, onSelectItem, selectedItem, PickerItemComponent= PickerItem, placeholder, items, width}) {
   const [modalVisible, setModalVisible] = useState(false)
   return (
     <React.Fragment>
@@ -26,12 +26,14 @@ export default function AppPicker({icon, onSelectItem, selectedItem, PickerItemC
         <Button title="Close" onPress={() => setModalVisible(false)}>
         </Button>
         <FlatList
+        numColumns={numberOfColumns}
         data={items}
         keyExtractor={(item)=> item.value.toString()}
         renderItem={({item}) =>
           <PickerItemComponent
+          item={item}
             label={item.label}
-          onPress={()=>{
+            onPress={()=>{
             setModalVisible(false)
             onSelectItem(item)
           }}
