@@ -16,19 +16,31 @@ import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 import * as ImagePicker from 'expo-image-picker'
+import * as Permissions from 'expo-permissions'
+import { result } from 'lodash';
+import ImageInput from './app/components/ImageInput';
+import ImageInputList from './app/components/ImageInputList';
+// import styles from './app/config/styles';
 
 export default function App() {
-  const requestPermission = async()=> {
-    const {granted} = await ImagePicker.requestCameraPermissionsAsync()
-    if (!granted){
-      alert('You need to enable permission to access the camera')
-    }
+  const [imageUris, setImageUris] = useState([])  
+  
+  const handleAdd = (uri) => {
+    setImageUris([...imageUris, uri])
   }
-useEffect(() => {
-  requestPermission()
-}, [])
+
+  const handleRemove = (uri) => {
+    setImageUris(imageUris.filter((imageUri) => imageUri !== uri))
+  }
+
   return (
-    <Screen />   
+    <SafeAreaView>
+<ImageInputList 
+  imageUris={imageUris}
+  onAddImage={handleAdd}
+  onRemoveImage={handleRemove}>
+  </ImageInputList>
+    </SafeAreaView>
   );
 }
 
@@ -40,5 +52,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  image: {
+    height: 100,
+    width: 100
+  }
 
 });
