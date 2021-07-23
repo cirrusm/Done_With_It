@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity, TextInput, Alert, Platform } from 'react-native';
 import {useDimensions, useDeviceOrientation} from '@react-native-community/hooks'
 import WelcomeScreen from './app/screens/WelcomeScreen';
@@ -15,12 +15,20 @@ import AppPicker from './app/components/AppPicker';
 import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
-
+import * as ImagePicker from 'expo-image-picker'
 
 export default function App() {
-
+  const requestPermission = async()=> {
+    const {granted} = await ImagePicker.requestCameraPermissionsAsync()
+    if (!granted){
+      alert('You need to enable permission to access the camera')
+    }
+  }
+useEffect(() => {
+  requestPermission()
+}, [])
   return (
-    <ListingEditScreen />   
+    <Screen />   
   );
 }
 
