@@ -20,11 +20,44 @@ import * as Permissions from 'expo-permissions'
 import { result } from 'lodash';
 import ImageInput from './app/components/ImageInput';
 import ImageInputList from './app/components/ImageInputList';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 // import styles from './app/config/styles';
+
+const Link = () => {
+  const navigation = useNavigation()
+  return (<Button 
+    title="Click"
+    onPress={()=> navigation.navigate("TweetDetails")}
+/>)}
+
+const Tweets = ({navigation}) => (
+  <Screen>
+    <Text>Tweets</Text>
+    <Link />
+  </Screen>
+)
+
+const TweetDetails = () => (
+<Screen>
+  <Text>Hi</Text>
+</Screen>
+
+)
+
+const Stack = createStackNavigator()
+const StackNavigator = () => (
+  <Stack.Navigator >
+    <Stack.Screen name = "Tweets" component={Tweets} />
+    <Stack.Screen name = "TweetDetails" component={TweetDetails} />
+  </Stack.Navigator>
+)
 
 export default function App() {
   return (
-  <ListingEditScreen />
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 }
 
