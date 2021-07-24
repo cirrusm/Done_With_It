@@ -21,6 +21,7 @@ import { result } from 'lodash';
 import ImageInput from './app/components/ImageInput';
 import ImageInputList from './app/components/ImageInputList';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 // import styles from './app/config/styles';
 
@@ -38,25 +39,46 @@ const Tweets = ({navigation}) => (
   </Screen>
 )
 
-const TweetDetails = () => (
+const TweetDetails = ({route}) => (
+  //useRoute gets you the route if youre in a child component
 <Screen>
-  <Text>Hi</Text>
+  <Text>details</Text>
 </Screen>
 
 )
 
 const Stack = createStackNavigator()
 const StackNavigator = () => (
-  <Stack.Navigator >
-    <Stack.Screen name = "Tweets" component={Tweets} />
+  <Stack.Navigator
+  screenOptions={{
+    headerStyle: {backgroundColor: "tomato"},
+    headerTintColor: 'White',
+    headerShow: false
+  }} >
+    <Stack.Screen 
+      name = "Tweets"
+      component={Tweets}
+      options={{
+        headerStyle: {backgroundColor: "tomato"},
+        headerTintColor: 'White',
+        headerShow: false
+      }} />
     <Stack.Screen name = "TweetDetails" component={TweetDetails} />
   </Stack.Navigator>
+)
+const Account = () => <Screen><Text>Account</Text></Screen>
+const Tab = createBottomTabNavigator();
+const TabNavigator = () => (
+  <Tab.Navigator>
+    <Tab.Screen name="Feed" component={Tweets} />
+    <Tab.Screen name="Account" component={Account} />
+  </Tab.Navigator>
 )
 
 export default function App() {
   return (
     <NavigationContainer>
-      <StackNavigator />
+      <TabNavigator />
     </NavigationContainer>
   );
 }
