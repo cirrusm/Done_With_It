@@ -15,6 +15,7 @@ import AppPicker from './app/components/AppPicker';
 import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
+
 import * as ImagePicker from 'expo-image-picker'
 import * as Permissions from 'expo-permissions'
 import { result } from 'lodash';
@@ -25,6 +26,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AuthNavigator from './app/navigation/AuthNavigator';
+import myTheme from './app/navigation/NavigationTheme'
+import AppNavigator from './app/navigation/AppNavigator';
 
 // import styles from './app/config/styles';
 
@@ -70,26 +73,11 @@ const StackNavigator = () => (
     <Stack.Screen name = "TweetDetails" component={TweetDetails} />
   </Stack.Navigator>
 )
-const Account = () => <Screen><Text>Account</Text></Screen>
-const Tab = createBottomTabNavigator();
-const TabNavigator = () => (
-  <Tab.Navigator
-    tabBarOptions= {{
-      activeBackgroundColor: 'tomato',
-      activeTintColor: 'white',
-      inactiveBackgroundColor: '#eee',
-      inactiveTintColor: 'black'
-    }}>
-    <Tab.Screen name="Login" component={WelcomeScreen} />
-    <Tab.Screen name="Feed" component={StackNavigator} />
-    <Tab.Screen name="Account" component={Account} />
-  </Tab.Navigator>
-)
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AuthNavigator />
+    <NavigationContainer theme={myTheme}>
+      <AppNavigator />
     </NavigationContainer>
   );
 }

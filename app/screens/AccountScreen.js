@@ -5,12 +5,13 @@ import ListItem from '../components/ListItem'
 import Icon from '../components/Icon'
 import colors from '../config/colors'
 import ListItemSeperator from '../components/ListItemSeperator'
+import routes from '../navigation/routes'
 
 const item = {
   id: 1,
-  title: 'Mosh Hamedani',
-  description: 'programmingwithmost@gmail.com',
-  image: require('../assets/mosh.jpg')
+  title: 'Cirrus Mokhtari',
+  description: 'Cirrus1994@gmail.com',
+  image: require('../assets/mypic.jpeg')
 }
 
 const menuItems = [
@@ -26,18 +27,19 @@ const menuItems = [
     icon: {
       name: "email",
       backgroundColor: colors.secondary
-    }
+    },
+    targetScreen: 'Messages'
   }
 ]
 
-export default function AccountScreen() {
+export default function AccountScreen({navigation}) {
   return (
     <Screen style={styles.screen}>
       <View style = {styles.container}>
       <ListItem 
         title={item.title} 
         subTitle={item.description} 
-        onPress={()=> console.log('message selected')}
+        
         image={item.image}
         style= {styles.card}
         />
@@ -52,7 +54,9 @@ export default function AccountScreen() {
               title={item.title}
               IconComponent = {
                 <Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />
-        } /> }
+        } 
+        onPress={() => navigation.navigate(routes.MESSAGES)}
+        /> }
 />
       </View>
       <ListItem
