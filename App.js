@@ -23,24 +23,8 @@ import ImageInputList from './app/components/ImageInputList';
 // import styles from './app/config/styles';
 
 export default function App() {
-  const [imageUris, setImageUris] = useState([])  
-  
-  const handleAdd = (uri) => {
-    setImageUris([...imageUris, uri])
-  }
-
-  const handleRemove = (uri) => {
-    setImageUris(imageUris.filter((imageUri) => imageUri !== uri))
-  }
-
   return (
-    <SafeAreaView>
-<ImageInputList 
-  imageUris={imageUris}
-  onAddImage={handleAdd}
-  onRemoveImage={handleRemove}>
-  </ImageInputList>
-    </SafeAreaView>
+  <ListingEditScreen />
   );
 }
 
