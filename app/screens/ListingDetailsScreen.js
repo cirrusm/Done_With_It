@@ -13,7 +13,7 @@ export default function ListingDetailsScreen({route}) {
      <AppText style={styles.title}>{listing.title}</AppText>
      <AppText style={styles.price}>${listing.price}</AppText>
      <View style={styles.infoContainer}>
-     <ListItem image={require('../assets/mosh.jpg')} subTitle='5 listings' title="Mosh Hamedani"/>
+     <ListItem image={require('../assets/horse.jpeg')} subTitle='3 listings' title="Meta Horse"/>
 
      </View>
     </View>

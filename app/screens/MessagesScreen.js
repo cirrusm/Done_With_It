@@ -10,13 +10,13 @@ const initialMessages = [
   {
     id: 1,
     title: 'Meta Horse',
-    description: 'EK EK AM INTERESTED IN THE MEAT YOU ARE SELLING?',
+    description: 'EK EK AM INTERESTED IN THE MEAT YOU ARE SELLING!!',
     image: require('../assets/horse.jpeg')
   },
   {
     id: 2,
-    title: 'John Smith',
-    description: 'Hey brother Hey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brotherHey brother',
+    title: 'Mosh Hameddani',
+    description: 'Hey brother just wondering if you still have that horse for sale, I may be interested and would love to discuss',
     image: require('../assets/mosh.jpg')
   }
 ]

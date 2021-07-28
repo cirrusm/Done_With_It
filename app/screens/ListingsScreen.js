@@ -18,6 +18,13 @@ export default function ListingsScreen({navigation}) {
       title: 'Couch in great condition',
       price: 500,
       image: require('../assets/couch.jpg')
+    },
+    {
+      id: 3,
+      title: "Am selling Pikachu",
+      price: 247,
+      image: require('../assets/pikachu.jpeg')
+
     }
   ]
   return (
